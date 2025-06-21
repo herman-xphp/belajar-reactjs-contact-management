@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import UserRegister from "./components/Users/UserRegister";
 import UserLogin from "./components/Users/UserLogin";
 import DashboardLayout from "./components/DashboardLayout";
+import UserProfile from "./components/Users/UserProfile";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -16,6 +17,7 @@ createRoot(document.getElementById("root")).render(
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route path="contacts" element={<div>Contact</div>} />
+          <Route path="users/profile" element={<UserProfile />} />
         </Route>
       </Routes>
     </BrowserRouter>
