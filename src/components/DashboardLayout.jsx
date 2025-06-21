@@ -28,7 +28,7 @@ export default function DashboardLayout() {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/users/logout</li>"
+                    to="/dashboard/users/logout"
                     className="text-gray-100 hover:text-white flex items-center transition-colors duration-200"
                   >
                     <i className="fas fa-sign-out-alt mr-2" />
