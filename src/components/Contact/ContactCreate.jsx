@@ -1,6 +1,39 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { contactCreate } from "./../../lib/api/ContactApi";
+import { useLocalStorage } from "react-use";
+import { alertError, alertSuccess } from "../../lib/alert";
 
 export default function ContactCreate() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const [token, _] = useLocalStorage("token", "");
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const response = await contactCreate(token, {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+    });
+
+    const responseBody = await response.json();
+    console.log(responseBody);
+
+    if (response.status === 200) {
+      await alertSuccess("Contact created successfully");
+      await navigate("/dashboard/contacts");
+    } else {
+      await alertError(responseBody.errors);
+    }
+  }
+
   return (
     <>
       <div>
@@ -18,7 +51,7 @@ export default function ContactCreate() {
         </div>
         <div className="bg-gray-800 bg-opacity-80 rounded-xl shadow-custom border border-gray-700 overflow-hidden max-w-2xl mx-auto animate-fade-in">
           <div className="p-8">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label
@@ -38,6 +71,8 @@ export default function ContactCreate() {
                       className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                       placeholder="Enter first name"
                       required
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -59,6 +94,8 @@ export default function ContactCreate() {
                       className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                       placeholder="Enter last name"
                       required
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -81,6 +118,8 @@ export default function ContactCreate() {
                     className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                     placeholder="Enter email address"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -102,6 +141,8 @@ export default function ContactCreate() {
                     className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                     placeholder="Enter phone number"
                     required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
               </div>

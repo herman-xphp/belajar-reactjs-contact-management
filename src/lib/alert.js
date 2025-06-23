@@ -33,12 +33,15 @@ export const alertInfo = async (message) => {
 };
 
 export const alertConfirm = async (message) => {
-  return Swal.fire({
+  const result = await Swal.fire({
+    icon: "question",
     title: "Are you sure?",
     text: message,
-    icon: "warning",
     showCancelButton: true,
-    confirmButtonText: "Yes, proceed",
-    cancelButtonText: "No, cancel",
+    confirmButtonText: "Yes",
+    confirmButtonColor: "#d33",
+    cancelButtonText: "Cancel",
+    cancelButtonColor: "#3085d6",
   });
+  return result.isConfirmed;
 };

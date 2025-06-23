@@ -8,6 +8,7 @@ import DashboardLayout from "./components/DashboardLayout";
 import UserProfile from "./components/Users/UserProfile";
 import UserLogout from "./components/Users/UserLogout";
 import ContactCreate from "./components/Contact/ContactCreate";
+import ContactList from "./components/Contact/ContactList";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -24,7 +25,7 @@ createRoot(document.getElementById("root")).render(
           </Route>
 
           <Route path="contacts">
-            <Route index element={<div>Contact</div>} />
+            <Route index element={<ContactList />} />
             <Route path="create" element={<ContactCreate />} />
           </Route>
         </Route>
