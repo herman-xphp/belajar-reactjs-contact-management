@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useEffectOnce, useLocalStorage } from "react-use";
 
-import { alertError } from "../../lib/alert";
-import { addressList } from "../../lib/api/AddressApi";
+import { alertConfirm, alertError, alertSuccess } from "../../lib/alert";
+import { addressDelete, addressList } from "../../lib/api/AddressApi";
 import { contactDetail } from "../../lib/api/ContactApi";
 
 export default function ContactDetail() {
@@ -36,7 +36,22 @@ export default function ContactDetail() {
       await alertError(responseBody.errors);
     }
   }
-  useEffectOnce(() => {});
+
+  async function handleDeleteAddress(addressId) {
+    if (!(await alertConfirm("Are you sure, you want to delete this address?")))
+      return;
+
+    const response = await addressDelete(token, id, addressId);
+    const responseBody = await response.json();
+    console.log(responseBody);
+
+    if (response.status === 200) {
+      await alertSuccess("Deleted address successfully");
+      await fetchAddresses();
+    } else {
+      await alertError(responseBody.errors);
+    }
+  }
 
   useEffectOnce(() => {
     fetchAddresses().then(() => console.log("Address fetched successfully"));
@@ -179,7 +194,10 @@ export default function ContactDetail() {
                       >
                         <i className="fas fa-edit mr-2" /> Edit
                       </Link>
-                      <button className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-md flex items-center">
+                      <button
+                        onClick={() => handleDeleteAddress(address.id)}
+                        className="px-4 py-2 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-200 font-medium shadow-md flex items-center"
+                      >
                         <i className="fas fa-trash-alt mr-2" /> Delete
                       </button>
                     </div>

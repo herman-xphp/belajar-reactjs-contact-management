@@ -11,7 +11,6 @@ export default function AddressEdit() {
   const { id, addressId } = useParams();
   const [token, _] = useLocalStorage("token", "");
   const [contact, setContact] = useState([]);
-  const navigate = useNavigate();
 
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
@@ -64,7 +63,6 @@ export default function AddressEdit() {
 
     if (response.status === 200) {
       await alertSuccess("Address created successfully");
-      await navigate(`/dashboard/contacts/${id}`);
     } else {
       await alertError(responseBody.errors);
     }
