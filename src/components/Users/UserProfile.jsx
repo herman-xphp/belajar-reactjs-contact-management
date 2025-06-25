@@ -1,11 +1,13 @@
 import { useState } from "react";
+
 import { useEffectOnce, useLocalStorage } from "react-use";
+
+import { alertError, alertSuccess } from "../../lib/alert";
 import {
   userDetail,
   userUpdatePassword,
   userUpdateProfile,
 } from "../../lib/api/UserApi";
-import { alertError, alertSuccess } from "../../lib/alert";
 
 export default function UserProfile() {
   const [name, setName] = useState("");

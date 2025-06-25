@@ -1,7 +1,8 @@
-import { useEffectOnce, useLocalStorage } from "react-use";
-import { userLogout } from "../../lib/api/UserApi";
-import { alertError } from "../../lib/alert";
 import { useNavigate } from "react-router";
+import { useEffectOnce, useLocalStorage } from "react-use";
+
+import { alertError } from "../../lib/alert";
+import { userLogout } from "../../lib/api/UserApi";
 
 export default function UserLogout() {
   const [token, setToken] = useLocalStorage("token", "");

@@ -1,17 +1,19 @@
 import { StrictMode } from "react";
+
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
+
 import Layout from "./components/Layout";
-import UserRegister from "./components/Users/UserRegister";
 import UserLogin from "./components/Users/UserLogin";
-import DashboardLayout from "./components/DashboardLayout";
-import UserProfile from "./components/Users/UserProfile";
 import UserLogout from "./components/Users/UserLogout";
-import ContactCreate from "./components/Contact/ContactCreate";
+import UserProfile from "./components/Users/UserProfile";
+import UserRegister from "./components/Users/UserRegister";
+import DashboardLayout from "./components/DashboardLayout";
 import ContactList from "./components/Contact/ContactList";
 import ContactEdit from "./components/Contact/ContactEdit";
+import ContactCreate from "./components/Contact/ContactCreate";
 import ContactDetail from "./components/Contact/ContactDetail";
-import AddressCreate from "./Address/AddressCreate";
+import AddressCreate from "./components/Address/AddressCreate";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

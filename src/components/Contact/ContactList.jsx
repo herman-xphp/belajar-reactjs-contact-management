@@ -1,8 +1,10 @@
-import { useEffectOnce, useLocalStorage } from "react-use";
-import { contactDelete, contactList } from "../../lib/api/ContactApi";
 import { useEffect, useState } from "react";
-import { alertConfirm, alertError, alertSuccess } from "../../lib/alert";
+
 import { Link } from "react-router";
+import { useEffectOnce, useLocalStorage } from "react-use";
+
+import { contactDelete, contactList } from "../../lib/api/ContactApi";
+import { alertConfirm, alertError, alertSuccess } from "../../lib/alert";
 
 export default function ContactList() {
   const [token, _] = useLocalStorage("token", "");

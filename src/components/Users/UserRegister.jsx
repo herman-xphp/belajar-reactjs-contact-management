@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { alertError, alertSuccess } from "../../lib/alert";
-import { userRegister } from "./../../lib/api/UserApi";
+
 import { Link, useNavigate } from "react-router";
+
+import { userRegister } from "./../../lib/api/UserApi";
+import { alertError, alertSuccess } from "../../lib/alert";
 
 export default function UserRegister() {
   const [username, setUsername] = useState("");
