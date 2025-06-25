@@ -15,11 +15,13 @@ import ContactCreate from "./components/Contact/ContactCreate";
 import ContactDetail from "./components/Contact/ContactDetail";
 import AddressCreate from "./components/Address/AddressCreate";
 import AddressEdit from "./components/Address/AddressEdit";
+import Home from "./components/Home";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route element={<Layout />}>
           <Route path="/register" element={<UserRegister />} />
           <Route path="/login" element={<UserLogin />} />

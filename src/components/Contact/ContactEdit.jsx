@@ -92,7 +92,6 @@ export default function ContactEdit() {
                       name="first_name"
                       className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                       placeholder="Enter first name"
-                      defaultValue="John"
                       required
                       value={first_name}
                       onChange={(e) => setFirstName(e.target.value)}
@@ -116,7 +115,6 @@ export default function ContactEdit() {
                       name="last_name"
                       className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                       placeholder="Enter last name"
-                      defaultValue="Doe"
                       required
                       value={last_name}
                       onChange={(e) => setLastName(e.target.value)}
@@ -141,7 +139,6 @@ export default function ContactEdit() {
                     name="email"
                     className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                     placeholder="Enter email address"
-                    defaultValue="john.doe@example.com"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -165,7 +162,6 @@ export default function ContactEdit() {
                     name="phone"
                     className="w-full pl-10 pr-3 py-3 bg-gray-700 bg-opacity-50 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
                     placeholder="Enter phone number"
-                    defaultValue="+1 (555) 123-4567"
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
