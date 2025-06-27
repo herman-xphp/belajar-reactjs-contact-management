@@ -55,6 +55,7 @@ export default function ContactList() {
   }
 
   async function handleDeleteContact(id) {
+    console.log(id);
     if (!(await alertConfirm("Are you sure, you want to delete this contact?")))
       return;
 
